@@ -15,12 +15,22 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Windows.Networking.PushNotifications;
+using System.Runtime.Serialization;
 
 
 namespace GetStartedWithData
 {
 
+    public class ClientNotificationChannel
+    {
+        public int Id { get; set; }
 
+
+        [DataMember(Name = "uri")]
+        public string Uri { get; set; }
+
+
+    }
 
 
     /// <summary>
@@ -30,11 +40,15 @@ namespace GetStartedWithData
     {
         public static PushNotificationChannel CurrentChannel { get; private set; }
 
-
         private async void AcquirePushChannel()
         {
             CurrentChannel =
                 await PushNotificationChannelManager.CreatePushNotificationChannelForApplicationAsync();
+
+
+            IMobileServiceTable<ClientNotificationChannel> channelTable = App.MobileService.GetTable<ClientNotificationChannel>();
+            var channel = new ClientNotificationChannel { Uri = CurrentChannel.Uri };
+            await channelTable.InsertAsync(channel);
         }
 
 
@@ -55,7 +69,36 @@ namespace GetStartedWithData
         public App()
         {
             this.InitializeComponent();
+       
             this.Suspending += OnSuspending;
+        }
+
+        string content = null;
+        private async void OnPushNotification(PushNotificationChannel sender, PushNotificationReceivedEventArgs e)
+        {
+            String notificationContent = String.Empty;
+
+            switch (e.NotificationType)
+            {
+                case PushNotificationType.Badge:
+                    notificationContent = e.BadgeNotification.Content.GetXml();
+                    break;
+
+                case PushNotificationType.Tile:
+                    notificationContent = e.TileNotification.Content.GetXml();
+                    break;
+
+                case PushNotificationType.Toast:
+                    notificationContent = e.ToastNotification.Content.GetXml();
+                    break;
+
+                case PushNotificationType.Raw:
+                    notificationContent = e.RawNotification.Content;
+                    break;
+            }
+
+            
+            e.Cancel = true;
         }
 
         /// <summary>
@@ -66,7 +109,8 @@ namespace GetStartedWithData
         /// <param name="args">Details about the launch request and process.</param>
         protected override void OnLaunched(LaunchActivatedEventArgs args)
         {
-          //  AcquirePushChannel();
+            AcquirePushChannel();
+            CurrentChannel.PushNotificationReceived += OnPushNotification;
             
             // Do not repeat app initialization when already running, just ensure that
             // the window is active

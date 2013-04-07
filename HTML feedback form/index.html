@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html>
+     <head>
+    <title>Azure Mobile Services HTML Client</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <!--[if lt IE 9]><script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js"></script><![endif]-->
+    <script src='http://code.jquery.com/jquery-1.9.0.min.js'></script>
+        <script src='https://corkug.azure-mobile.net/client/MobileServices.Web-1.0.0.min.js'></script>
+  </head>
+         <body>
+<div class="span6">
+ <h2>Have you say !</h2>
+  <form id = "feedback">
+
+    <div class="control-group">
+      <div class="controls">
+        <input type="text" id="fullName" name="fullName" placeholder="Your Name" class="input-xlarge">
+      </div>
+    </div>
+
+      <div class="controls controls-row">
+          <input id="email" name="email" type="email"  class="input-xlarge" placeholder="Email address">
+      </div>
+
+      <div class="controls controls-row">
+          <input id="twitter" name="twitter" type="text"  class="input-xlarge" placeholder="Twitter handle"> 
+      </div>
+
+      <div class="controls">
+          <textarea id="message" name="message" class="span4" placeholder="Your Message / Question " rows="7"></textarea>
+      </div>
+      
+      <div class="controls">
+          <button id="contact-submit" type="submit" class="btn btn-primary input-medium ">Send</button>
+      </div>
+  </form>
+</div>
+        <script src='http://code.jquery.com/jquery-1.9.0.min.js'></script>
+		
+        <script src='app.js'></script>
+    </body>
+</html>
