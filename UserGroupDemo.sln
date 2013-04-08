@@ -7,12 +7,17 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Windows8App", "Win8App\Wind
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcApplication1", "MvcApplication1\MvcApplication1.csproj", "{E4AC53C4-BDC5-4977-A8C5-51E18ECFA5B1}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HTML Client", "HTML Client", "{3EDCB316-2032-48AF-8BD3-5D448AA58024}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Server Scripts", "Server Scripts", "{D4E58ADA-B2FE-4362-86EC-5DDB2FDE28FC}"
 	ProjectSection(SolutionItems) = preProject
-		..\HTML Client\app.js = ..\HTML Client\app.js
-		..\HTML Client\app1.js = ..\HTML Client\app1.js
-		..\HTML Client\index.html = ..\HTML Client\index.html
-		..\HTML Client\Index_feedback.htm = ..\HTML Client\Index_feedback.htm
+		server scripts\Feedback table insert script.txt = server scripts\Feedback table insert script.txt
+		server scripts\Feedback1.Insert.js = server scripts\Feedback1.Insert.js
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HTML5 Client", "HTML5 Client", "{C23C4F45-EBE6-4833-96B2-750B11442DEC}"
+	ProjectSection(SolutionItems) = preProject
+		HTML5 Client\app.js = HTML5 Client\app.js
+		HTML5 Client\index.html = HTML5 Client\index.html
+		HTML5 Client\styles.css = HTML5 Client\styles.css
 	EndProjectSection
 EndProject
 Global
