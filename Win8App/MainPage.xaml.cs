@@ -19,15 +19,15 @@ using System.ComponentModel.DataAnnotations;
 
 namespace GetStartedWithData
 {
-    public class Feedback
+    public class Feedback1
     {
         public int? Id { get; set; }
         [Required]
         public string Name { get; set; }
         [Required]
         public string Email { get; set; }
-        public string TwitterHandle { get; set; }
-        public string Comment { get; set; }
+        public string Twitter { get; set; }
+        public string Message { get; set; }
 
     }
 
@@ -39,15 +39,15 @@ namespace GetStartedWithData
         //// is integrated with your Mobile Service to make it easy to bind your data to the ListView
         //// TODO: Uncomment the following two lines of code to replace the following collection with todoTable, 
         //// a proxy for the table in SQL Database.
-        private MobileServiceCollectionView<Feedback> items;
-        private IMobileServiceTable<Feedback> todoTable = App.MobileService.GetTable<Feedback>();
+        private MobileServiceCollectionView<Feedback1> items;
+        private IMobileServiceTable<Feedback1> todoTable = App.MobileService.GetTable<Feedback1>();
 
         public MainPage()
         {
             this.InitializeComponent();
         }
 
-        private async void InsertTodoItem(Feedback todoItem)
+        private async void InsertTodoItem(Feedback1 todoItem)
         {
             // TODO: Delete or comment the following statement; Mobile Services auto-generates the ID.
             //todoItem.Id = items.Count == 0 ? 0 : items.Max(i => i.Id) + 1;
@@ -72,7 +72,7 @@ namespace GetStartedWithData
             ListItems.ItemsSource = items; 
         }
 
-        private async void UpdateCheckedTodoItem(Feedback item)
+        private async void UpdateCheckedTodoItem(Feedback1 item)
         {
             //// This code takes a freshly completed TodoItem and updates the database. When the MobileService 
             //// responds, the item is removed from the list.

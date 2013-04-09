@@ -21,7 +21,7 @@ using System.Runtime.Serialization;
 namespace GetStartedWithData
 {
 
-    public class ClientNotificationChannel
+    public class Channel
     {
         public int Id { get; set; }
 
@@ -46,8 +46,8 @@ namespace GetStartedWithData
                 await PushNotificationChannelManager.CreatePushNotificationChannelForApplicationAsync();
 
 
-            IMobileServiceTable<ClientNotificationChannel> channelTable = App.MobileService.GetTable<ClientNotificationChannel>();
-            var channel = new ClientNotificationChannel { Uri = CurrentChannel.Uri };
+            IMobileServiceTable<Channel> channelTable = App.MobileService.GetTable<Channel>();
+            var channel = new Channel { Uri = CurrentChannel.Uri };
             await channelTable.InsertAsync(channel);
         }
 
@@ -58,8 +58,8 @@ namespace GetStartedWithData
         //// Do this after you add a reference to the Mobile Services client to your project.
 
         public static MobileServiceClient MobileService = new MobileServiceClient(
-            "https://mtugireland.azure-mobile.net/",
-            "ygWHMuXeeYCXiiyyPurozmmevtJJDm45"
+            "https://corkug.azure-mobile.net/",
+            "NYUTJeqEKdbitDyuDAzrDbtmcMZLzs78"
         );
 
         /// <summary>
@@ -74,32 +74,32 @@ namespace GetStartedWithData
         }
 
         string content = null;
-        private async void OnPushNotification(PushNotificationChannel sender, PushNotificationReceivedEventArgs e)
-        {
-            String notificationContent = String.Empty;
+        //private async void OnPushNotification(PushNotificationChannel sender, PushNotificationReceivedEventArgs e)
+        //{
+        //    String notificationContent = String.Empty;
 
-            switch (e.NotificationType)
-            {
-                case PushNotificationType.Badge:
-                    notificationContent = e.BadgeNotification.Content.GetXml();
-                    break;
+        //    switch (e.NotificationType)
+        //    {
+        //        case PushNotificationType.Badge:
+        //            notificationContent = e.BadgeNotification.Content.GetXml();
+        //            break;
 
-                case PushNotificationType.Tile:
-                    notificationContent = e.TileNotification.Content.GetXml();
-                    break;
+        //        case PushNotificationType.Tile:
+        //            notificationContent = e.TileNotification.Content.GetXml();
+        //            break;
 
-                case PushNotificationType.Toast:
-                    notificationContent = e.ToastNotification.Content.GetXml();
-                    break;
+        //        case PushNotificationType.Toast:
+        //            notificationContent = e.ToastNotification.Content.GetXml();
+        //            break;
 
-                case PushNotificationType.Raw:
-                    notificationContent = e.RawNotification.Content;
-                    break;
-            }
+        //        case PushNotificationType.Raw:
+        //            notificationContent = e.RawNotification.Content;
+        //            break;
+        //    }
 
             
-            e.Cancel = true;
-        }
+        //    e.Cancel = true;
+        //}
 
         /// <summary>
         /// Invoked when the application is launched normally by the end user.  Other entry points
@@ -110,7 +110,7 @@ namespace GetStartedWithData
         protected override void OnLaunched(LaunchActivatedEventArgs args)
         {
             AcquirePushChannel();
-            CurrentChannel.PushNotificationReceived += OnPushNotification;
+          //  CurrentChannel.PushNotificationReceived += OnPushNotification;
             
             // Do not repeat app initialization when already running, just ensure that
             // the window is active

@@ -9,8 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcApplication1", "MvcAppli
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Server Scripts", "Server Scripts", "{D4E58ADA-B2FE-4362-86EC-5DDB2FDE28FC}"
 	ProjectSection(SolutionItems) = preProject
+		server scripts\Channel.Insert.js = server scripts\Channel.Insert.js
 		server scripts\Feedback table insert script.txt = server scripts\Feedback table insert script.txt
 		server scripts\Feedback1.Insert.js = server scripts\Feedback1.Insert.js
+		Push Notifications.txt = Push Notifications.txt
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HTML5 Client", "HTML5 Client", "{C23C4F45-EBE6-4833-96B2-750B11442DEC}"
