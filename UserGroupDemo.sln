@@ -17,8 +17,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Server Scripts", "Server Sc
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HTML5 Client", "HTML5 Client", "{C23C4F45-EBE6-4833-96B2-750B11442DEC}"
 	ProjectSection(SolutionItems) = preProject
-		HTML5 Client\app.js = HTML5 Client\app.js
 		HTML5 Client\index.html = HTML5 Client\index.html
+		HTML5 Client\script.js = HTML5 Client\script.js
 		HTML5 Client\styles.css = HTML5 Client\styles.css
 	EndProjectSection
 EndProject

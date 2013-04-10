@@ -11,6 +11,7 @@ function insert(item, user, request) {
             //send push notification
 			sendNotifications();
 			sendNotifications1();
+			sendNotifications2();
 		}
 	});
 
@@ -50,7 +51,6 @@ function insert(item, user, request) {
 	}
 
 
-    //image1src: "http://australia.msteched.com/resources/documents/p/TEAU12/photos/76c4ea1d-fae0-e111-84a1-001ec953730b.jpg",
 
 	function sendNotifications1() {
 	    var channelTable = tables.getTable('Channel');
@@ -75,6 +75,27 @@ function insert(item, user, request) {
 	    });
 	}
 
+	function sendNotifications2() {
+	    var channelTable = tables.getTable('Channel');
+	    channelTable.read({
+	        success: function (channels) {
+	            channels.forEach(function (channel) {
+	                push.wns.sendTileWideSmallImageAndText04(channel.uri, {
 
+	                    image1src: 'http://api.twitter.com/1/users/profile_image/' + item.Twitter,
+
+	                    image1alt: 'My pic',
+	                    text1: "A record inserted",
+	                    text2: "from " + item.Name,
+	                    text3: item.Message
+	                }, {
+	                    success: function (pushResponse) {
+	                        console.log("Sent push:", pushResponse);
+	                    }
+	                });
+	            });
+	        }
+	    });
+	}
 
 }

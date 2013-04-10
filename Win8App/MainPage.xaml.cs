@@ -68,8 +68,7 @@ namespace GetStartedWithData
                .Where(todoItem => todoItem.Id >0)
                .ToCollectionView();
 
-
-            ListItems.ItemsSource = items; 
+             ListItems.ItemsSource = items; 
         }
 
         private async void UpdateCheckedTodoItem(Feedback1 item)
