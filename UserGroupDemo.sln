@@ -13,6 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Server Scripts", "Server Sc
 		server scripts\Feedback table insert script.txt = server scripts\Feedback table insert script.txt
 		server scripts\Feedback1.Insert.js = server scripts\Feedback1.Insert.js
 		Push Notifications.txt = Push Notifications.txt
+		server scripts\Updates.Schedule.js = server scripts\Updates.Schedule.js
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HTML5 Client", "HTML5 Client", "{C23C4F45-EBE6-4833-96B2-750B11442DEC}"

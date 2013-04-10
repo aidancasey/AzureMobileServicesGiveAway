@@ -11,16 +11,14 @@
     <Grid Background="White">
 
         <Grid Margin="50,50,10,10">
+    
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-       
             <Grid Grid.Row="0" Grid.ColumnSpan="2" Margin="0,0,0,20">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
@@ -29,16 +27,17 @@
                 <Button Margin="72,0,0,0" Name="ButtonRefresh" Click="ButtonRefresh_Click">Refresh</Button>
 
                 <ListView Name="ListItems" Margin="62,10,0,0" Grid.Row="1">
+
+
                     <ListView.ItemTemplate>
-                        
                    
+                        
                         <DataTemplate>
                 
                             <StackPanel Orientation="Horizontal">
-                
-                                <TextBlock Text="{Binding Email}" Margin="10,5" VerticalAlignment="Center" />
-                                <TextBlock Text="{Binding Twitter}" Margin="10,5" VerticalAlignment="Center" />
-                                <TextBlock Text="{Binding Message}" Margin="10,5" VerticalAlignment="Center" />
+                                <TextBlock Text="{Binding Email}" Margin="10,5" Width="200"  VerticalAlignment="Center" />
+                                <TextBlock Text="{Binding Twitter}" Margin="10,5" Width="200" VerticalAlignment="Center" />
+                                <TextBlock Text="{Binding Message}" Margin="10,5" Width="200"  TextWrapping="Wrap" VerticalAlignment="Center" />
                             </StackPanel>
                         </DataTemplate>
                     </ListView.ItemTemplate>

@@ -63,9 +63,11 @@ namespace GetStartedWithData
 
         private void RefreshTodoItems()
         {
-            // This query filters out completed TodoItems. 
+            // filter out the latest results only
             items = todoTable
                .Where(todoItem => todoItem.Id >0)
+               .OrderByDescending(x=>x.Id)
+               .Take(7)
                .ToCollectionView();
 
              ListItems.ItemsSource = items; 
