@@ -1,5 +1,5 @@
-AzureMobileServicesFun
-======================
+The Great Azure Mobile Services Give Away
+=========+++++++++++++++++++++============
 
 Code samples to support an upcoming user group talk on Windows Azure Mobile Services.
 
