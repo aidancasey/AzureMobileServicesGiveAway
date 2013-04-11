@@ -12,10 +12,7 @@ namespace MVC_Client.Controllers
 {
     public class PrizeGivingController : Controller
     {
-
         private string _key = "NYUTJeqEKdbitDyuDAzrDbtmcMZLzs78";
-
-
 
         private ODataMetadata<Tweet>  GetTweets(int skip)
         {
@@ -28,9 +25,17 @@ namespace MVC_Client.Controllers
            return JsonConvert.DeserializeObject<ODataMetadata<Tweet>>(data);
         }
 
+        private ODataMetadata<CrowdFeedback> GetFeedBackResponses(int skip)
+        {
+            HttpClient client;
+            client = new HttpClient();
+            client.DefaultRequestHeaders.Add("X-ZUMO-APPLICATION", _key);
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
+            var data = client.GetStringAsync("https://corkug.azure-mobile.net/tables/Feedback1?$inlinecount=allpages&$skip=" + skip).Result;
+            return JsonConvert.DeserializeObject<ODataMetadata<CrowdFeedback>>(data);
+        }
 
-        
         //
         // GET: /PrizeGiving/Index
 
@@ -66,89 +71,29 @@ namespace MVC_Client.Controllers
         }
 
         //
-        // GET: /PrizeGiving/Details/5
+        // GET: /PrizeGiving/CrowdFeedback
 
-        public ActionResult Details(int id)
+        public ActionResult CrowdFeedback()
         {
-            return View();
-        }
 
-        //
-        // GET: /PrizeGiving/Create
+            ODataMetadata<CrowdFeedback> data = GetFeedBackResponses(0);
 
-        public ActionResult Create()
-        {
-            return View();
-        }
+            long countTweets = data.Count.Value;
 
-        //
-        // POST: /PrizeGiving/Create
 
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
-        {
-            try
+            List<CrowdFeedback> allResponses = data.Results.ToList();
+
+            // loop till we get em all 
+
+            while (allResponses.Count < data.Count)
             {
-                // TODO: Add insert logic here
 
-                return RedirectToAction("Index");
+                data = GetFeedBackResponses(allResponses.Count);
+                allResponses.AddRange(data.Results.ToList());
             }
-            catch
-            {
-                return View();
-            }
+
+            return View(allResponses);
         }
 
-        //
-        // GET: /PrizeGiving/Edit/5
-
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        //
-        // POST: /PrizeGiving/Edit/5
-
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        //
-        // GET: /PrizeGiving/Delete/5
-
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        //
-        // POST: /PrizeGiving/Delete/5
-
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
     }
 }

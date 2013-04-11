@@ -108,6 +108,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CrowdFeedback.cs" />
     <Compile Include="Models\ODataMetadata.cs" />
     <Compile Include="Models\Tweet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -139,6 +140,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\PrizeGiving\Tweets.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\PrizeGiving\CrowdFeedback.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
