@@ -1,0 +1,35 @@
+﻿@model IEnumerable<MVC_Client.Models.Tweet>
+
+
+@{
+    ViewBag.Title = "All Tweets";
+}
+
+<h2>All Tweets</h2>
+
+@Html.ActionLink("Pick A Random Tweet!", "RandomTweet")
+
+
+            <table >
+                <thead>
+                    <tr>
+                        <th >Id</th>
+                        <th>Twitter Id</th>
+                        <th>Text/th>
+                        <th>Author</th>
+      
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var result in Model)
+                    {
+                        <tr>
+                            <td >@result.Id</td>
+                              <td >@result.TwitterId</td>
+                              <td >@result.Text</td>
+                              <td >@result.Author</td>
+                          
+                        </tr>
+                    }
+                </tbody>
+            </table>

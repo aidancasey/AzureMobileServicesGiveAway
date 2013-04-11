@@ -1,0 +1,46 @@
+﻿<Page
+    x:Class="GetStartedWithData.MainPage"
+    IsTabStop="false"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:GetStartedWithData"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="Azure">
+    <Grid Background="White">
+        <Grid Margin="10,50,10,50">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="400" />
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" Grid.ColumnSpan="1" Margin="0,0,0,0" Background="LightGray">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Button Margin="360,0,0,0" Background="LightBlue" VerticalAlignment="Center" Name="ButtonRefresh" Click="ButtonRefresh_Click">Refresh</Button>
+                <ListView Name="ListItems" Margin="0,0,0,0" 
+                           ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                           ScrollViewer.VerticalScrollBarVisibility="Visible"
+                            ScrollViewer.HorizontalScrollMode="Enabled"
+                            ScrollViewer.VerticalScrollMode="Enabled"
+                            ScrollViewer.ZoomMode="Disabled"
+                          Grid.Row="1">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Id}" Margin="10,5" Width="30"  VerticalAlignment="Center" />
+                                <TextBlock Text="{Binding Email}" Margin="10,5" Width="200"  VerticalAlignment="Center" />
+                                <TextBlock Text="{Binding Twitter}" Margin="10,5" Width="200" VerticalAlignment="Center" />
+                                <TextBlock Text="{Binding Message}" Margin="10,5" Width="200"  TextWrapping="Wrap" VerticalAlignment="Center" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>
