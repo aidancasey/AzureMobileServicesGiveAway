@@ -58,8 +58,8 @@ namespace GetStartedWithData
         //// Do this after you add a reference to the Mobile Services client to your project.
 
         public static MobileServiceClient MobileService = new MobileServiceClient(
-            "https://corkug.azure-mobile.net/",
-            "NYUTJeqEKdbitDyuDAzrDbtmcMZLzs78"
+            "https://irishazureheads.azure-mobile.net/",
+            "vtGmfCuERKZUykSqHaUcMqXGXlWLbO76"
         );
 
         /// <summary>

@@ -1,8 +1,8 @@
 ﻿$(function() {
 
      var MobileServiceClient = WindowsAzure.MobileServiceClient,
-		 client = new MobileServiceClient('https://corkug.azure-mobile.net/', 'NYUTJeqEKdbitDyuDAzrDbtmcMZLzs78'),
-         todoItemTable = client.getTable('feedback1');
+		 client = new MobileServiceClient('https://irishazureheads.azure-mobile.net/', 'vtGmfCuERKZUykSqHaUcMqXGXlWLbO76'),
+         todoItemTable = client.getTable('Entry');
 
      $("#contact-submit").click(function (evt) {
     
@@ -12,6 +12,7 @@
          var message = $('#message').val();
 
          todoItemTable.insert({ Name: fullName, Email: email, Twitter: twitter, Message: message }).then(alert('phew!'));
+       //  todoItemTable.insert({ Name: fullName }).then(alert('right this should work !!'));
          evt.preventDefault();
             
      }

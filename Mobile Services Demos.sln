@@ -4,7 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Server Scripts", "Server Scripts", "{D4E58ADA-B2FE-4362-86EC-5DDB2FDE28FC}"
 	ProjectSection(SolutionItems) = preProject
 		server scripts\Channel.Insert.js = server scripts\Channel.Insert.js
-		server scripts\Feedback table insert script.txt = server scripts\Feedback table insert script.txt
+		server scripts\entry table insert step 1.js = server scripts\entry table insert step 1.js
+		server scripts\entry table insert step 2 - add timestamp.js = server scripts\entry table insert step 2 - add timestamp.js
+		server scripts\entry table insert step 3 with push.js = server scripts\entry table insert step 3 with push.js
 		server scripts\Feedback1.Insert.js = server scripts\Feedback1.Insert.js
 		Push Notifications.txt = Push Notifications.txt
 		server scripts\Push Notifications.txt = server scripts\Push Notifications.txt
@@ -21,6 +23,11 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVC Client", "MVC Client\MVC Client.csproj", "{254B5D6C-21E8-483B-99B6-B424B43A4B36}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Windows Store Client", "Windows Store Client\Windows Store Client.csproj", "{682112A5-CCEA-44A6-8D47-E4BB0B41EAFD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CLI tools", "CLI tools", "{A7A0F023-9A34-4B35-91CE-758DF24ED9B3}"
+	ProjectSection(SolutionItems) = preProject
+		CLI tools\tailing logs\log.js = CLI tools\tailing logs\log.js
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
