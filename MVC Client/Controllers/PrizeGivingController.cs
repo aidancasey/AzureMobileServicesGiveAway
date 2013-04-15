@@ -12,7 +12,7 @@ namespace MVC_Client.Controllers
 {
     public class PrizeGivingController : Controller
     {
-        private string _key = "NYUTJeqEKdbitDyuDAzrDbtmcMZLzs78";
+        private string _key = "gaZDzSbELKKBORCiOizFHGjGicgURo61";
 
         private ODataMetadata<Tweet>  GetTweets(int skip)
         {
@@ -21,7 +21,7 @@ namespace MVC_Client.Controllers
             client.DefaultRequestHeaders.Add("X-ZUMO-APPLICATION", _key);
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-            var data = client.GetStringAsync("https://corkug.azure-mobile.net/tables/Updates?$inlinecount=allpages&$skip="+skip).Result;
+            var data = client.GetStringAsync("https://irishazureheads.azure-mobile.net/tables/Updates?$inlinecount=allpages&$skip="+skip).Result;
            return JsonConvert.DeserializeObject<ODataMetadata<Tweet>>(data);
         }
 
@@ -32,7 +32,7 @@ namespace MVC_Client.Controllers
             client.DefaultRequestHeaders.Add("X-ZUMO-APPLICATION", _key);
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-            var data = client.GetStringAsync("https://corkug.azure-mobile.net/tables/Feedback1?$inlinecount=allpages&$skip=" + skip).Result;
+            var data = client.GetStringAsync("https://irishazureheads.azure-mobile.net/tables/Entry?$inlinecount=allpages&$skip=" + skip).Result;
             return JsonConvert.DeserializeObject<ODataMetadata<CrowdFeedback>>(data);
         }
 

@@ -59,7 +59,7 @@ namespace GetStartedWithData
 
         public static MobileServiceClient MobileService = new MobileServiceClient(
             "https://irishazureheads.azure-mobile.net/",
-            "vtGmfCuERKZUykSqHaUcMqXGXlWLbO76"
+            "gaZDzSbELKKBORCiOizFHGjGicgURo61"
         );
 
         /// <summary>

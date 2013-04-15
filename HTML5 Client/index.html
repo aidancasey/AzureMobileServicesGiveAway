@@ -1,44 +1,88 @@
 ﻿<!DOCTYPE html>
 <html>
-     <head>
-    <title>"irishazureheads competition form</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <!--[if lt IE 9]><script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js"></script><![endif]-->
-    <script src='http://code.jquery.com/jquery-1.9.0.min.js'></script>
-        <script src='https://irishazureheads.azure-mobile.net/client/MobileServices.Web-1.0.0.min.js'></script>
-  </head>
-         <body>
-<div class="span6">
- <h2>If you're not in you can't win!</h2>
-  <form id = "feedback">
-
-    <div class="control-group">
-      <div class="controls">
-        <input type="text" id="fullName" name="fullName" placeholder="Your Name" class="input-xlarge">
-      </div>
-    </div>
-
-     <div class="controls controls-row">
-          <input id="email" name="email" type="email"  class="input-xlarge" placeholder="Email address">
-      </div>
-
-      <div class="controls controls-row">
-          <input id="twitter" name="twitter" type="text"  class="input-xlarge" placeholder="Twitter handle"> 
-      </div>
-
-      <div class="controls">
-          <textarea id="message" name="message" class="span4" placeholder="Your Message / Question " rows="7"></textarea>
-      </div>
-      
-      <div class="controls">
-          <button id="contact-submit" type="submit" class="btn btn-primary input-medium ">Send</button>
-      </div>
-  </form>
-</div>
+    
+    <head>
+        <title>"@irishazureheads competition</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Bootstrap -->
+        <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+        <!--[if lt IE 9]>
+            <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js"></script>
+        <![endif]-->
         <script src='http://code.jquery.com/jquery-1.9.0.min.js'></script>
-		
-        <script src='script.js'></script>
+        <script src='https://irishazureheads.azure-mobile.net/client/MobileServices.Web-1.0.0.min.js'></script>
+    </head>
+    
+    <body>
+        <div class="span8" id="main">
+             <h2>@irishazureheads competition</h2>
+
+            <form id="feedback">
+                <div class="control-group">
+                    <div class="controls">
+                        <input type="text" id="fullName" name="fullName" placeholder="Your Name" class="input-xlarge">
+                    </div>
+                </div>
+                <div class="controls controls-row">
+                    <input id="email" name="email" type="email" class="input-xlarge" placeholder="Email address">
+                </div>
+                <div class="controls controls-row">
+                    <input id="twitter" name="twitter" type="text" class="input-xlarge" placeholder="Twitter handle">
+                </div>
+                <div class="controls">
+                    <textarea id="message" name="message" class="span4" placeholder="Your Message / Question " rows="7"></textarea>
+                </div>
+                <div class="controls">
+                   <p>Where are you sitting?</p>
+                    <label for="rdo-dublin">
+                        <input type="radio" id="rdo-dublin" name="location" value="Dublin" />Dublin</label>
+                    <label for="rdo-cork">
+                        <input type="radio" id="rdo-cork" name="location" value="Cork" />Cork</label>
+                </div>
+                <br/>
+                <br/>
+                <div class="controls">
+                    <button id="contact-submit" type="submit" class="btn btn-primary input-medium ">Send</button>
+                </div>
+            </form>
+        </div>
+        <div class="span8" style="display:none" id="thanks">
+            <div class="row">
+                <div class="span12">
+                     <h2>Good Luck</h2> 
+                    <p>May the source be with you !</p>
+                </div>
+            </div>
+        </div>
+        <script src='http://code.jquery.com/jquery-1.9.0.min.js'></script>
+        <script lang="JavaScript" type="text/javascript">
+            $(function () {
+
+                var MobileServiceClient = WindowsAzure.MobileServiceClient,
+                    client = new MobileServiceClient('https://irishazureheads.azure-mobile.net/', 'gaZDzSbELKKBORCiOizFHGjGicgURo61'),
+                    todoItemTable = client.getTable('Entry');
+
+                $("#contact-submit").click(function (evt) {
+
+                    var fullName = $('#fullName').val();
+                    var email = $('#email').val();
+                    var twitter = $('#twitter').val();
+                    var message = $('#message').val();
+                    var city = $('input:radio[name=location]:checked').val();
+
+                    todoItemTable.insert({
+                        Name: fullName,
+                        Email: email,
+                        Twitter: twitter,
+                        Message: message,
+                        City: city
+                    }).then($("#main").hide()).then($("#thanks").show());
+                    //  todoItemTable.insert({ Name: fullName }).then(alert('right this should work !!'));
+                    evt.preventDefault();
+                });
+
+            });
+        </script>
     </body>
+
 </html>
