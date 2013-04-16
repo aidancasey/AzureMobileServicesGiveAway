@@ -7,7 +7,7 @@ function GetTweets() {
     
     // 'http://search.twitter.com/search.json?q=%23Neo4J&rpp=100&result_type=mixed'
     appendLastTweetId(
-        'http://search.twitter.com/search.json?q=irishazureheads&rpp=100&result_type=mixed',
+        'http://search.twitter.com/search.json?q=%23windowsazure&result_type=recent',
         function twitterUrlReady(url){
             request(url, function tweetsLoaded (error, response, body) {
                 if (!error && response.statusCode == 200) {
