@@ -38,6 +38,19 @@ namespace WebSite.Controllers
             return JsonConvert.DeserializeObject<ODataMetadata<CrowdFeedback>>(data);
         }
 
+
+        private List<CrowdFeedback> GetCorkOnlyResponses()
+        {
+            HttpClient client;
+            client = new HttpClient();
+            client.DefaultRequestHeaders.Add("X-ZUMO-APPLICATION", _key);
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            var data = client.GetStringAsync("https://irishazureheads.azure-mobile.net/tables/CorkEntry").Result;
+            return JsonConvert.DeserializeObject<List<CrowdFeedback>>(data);
+        }
+
+
         private List<CrowdFeedback> GetDublinResponses()
         {
             ODataMetadata<CrowdFeedback> data = GetFeedBackResponses(0);
@@ -56,6 +69,9 @@ namespace WebSite.Controllers
                 allResponses.AddRange(data.Results.ToList());
             }
 
+
+            //Filter in the client .. inefficient
+
             return allResponses.FindAll(z => z.City == "Dublin");
 
 
@@ -64,23 +80,8 @@ namespace WebSite.Controllers
 
         private List<CrowdFeedback> GetCorkResponses()
         {
-            ODataMetadata<CrowdFeedback> data = GetFeedBackResponses(0);
-
-            long countTweets = data.Count.Value;
-
-
-            List<CrowdFeedback> allResponses = data.Results.ToList();
-
-            // loop till we get em all 
-
-            while (allResponses.Count < data.Count)
-            {
-
-                data = GetFeedBackResponses(allResponses.Count);
-                allResponses.AddRange(data.Results.ToList());
-            }
-
-            return allResponses.FindAll(z => z.City == "Cork");
+            var allResponses = GetCorkOnlyResponses();
+            return allResponses;
 
 
         }
