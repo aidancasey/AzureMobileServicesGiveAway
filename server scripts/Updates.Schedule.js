@@ -1,14 +1,13 @@
 var updatesTable = tables.getTable('Updates');
 var request = require('request');
 
-
 function GetTweets() {   
     // Check what is the last tweet we stored when the job last ran
     // and ask Twitter to only give us more recent tweets
     
     // 'http://search.twitter.com/search.json?q=%23Neo4J&rpp=100&result_type=mixed'
     appendLastTweetId(
-        'http://search.twitter.com/search.json?q=%3Airishazureheads&rpp=100&result_type=mixed',
+        'http://search.twitter.com/search.json?q=irishazureheads&rpp=100&result_type=mixed',
         function twitterUrlReady(url){
             request(url, function tweetsLoaded (error, response, body) {
                 if (!error && response.statusCode == 200) {
@@ -53,5 +52,5 @@ function appendLastTweetId(url, callback){
 
 function filterOutTweet(tweet){
     // Remove retweets and replies
-    return (tweet.text.indexOf('RT') === 0 || tweet.to_user_id);
+   // return (tweet.text.indexOf('RT') === 0 || tweet.to_user_id);
 }
