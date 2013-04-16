@@ -89,6 +89,9 @@ DocProject/Help/html
 # Click-Once directory
 publish/
 
+
+secret/
+
 # Publish Web Output
 *.Publish.xml
 *.pubxml
