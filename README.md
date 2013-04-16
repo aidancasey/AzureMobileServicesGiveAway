@@ -6,7 +6,10 @@ _________________________________________________
 
 Prize giving applications built using a Windows Azure Mobile services Backend
 
-This code is suitable for a user group meet up - it demonstrated how to connect to mobile services sunig a variety of clients
+This code is suitable for a user group meet up - it demonstrated how to connect to mobile services using  a variety of clients SDK's & REST API
+
+
+Details...
 
 HTML + JavaScript client enables the audience to post messages to a table called "Entry"
 
