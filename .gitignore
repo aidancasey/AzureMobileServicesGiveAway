@@ -94,8 +94,7 @@ publish/
 *.pubxml
 
 # NuGet Packages Directory
-## TODO: If you have NuGet Package Restore enabled, uncomment the next line
-#packages/
+packages/
 
 # Windows Azure Build Output
 csx
@@ -148,7 +147,9 @@ $RECYCLE.BIN/
 # Mac crap
 .DS_Store
 
- 
 _ReSharper.*
 *.resharper
 Ankh.NoLoad
+
+# This is just a marker file whose content will be replaced by config transforms
+WebSite/Web.config
