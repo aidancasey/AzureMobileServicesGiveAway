@@ -38,6 +38,53 @@ namespace WebSite.Controllers
             return JsonConvert.DeserializeObject<ODataMetadata<CrowdFeedback>>(data);
         }
 
+        private List<CrowdFeedback> GetDublinResponses()
+        {
+            ODataMetadata<CrowdFeedback> data = GetFeedBackResponses(0);
+
+            long countTweets = data.Count.Value;
+
+
+            List<CrowdFeedback> allResponses = data.Results.ToList();
+
+            // loop till we get em all 
+
+            while (allResponses.Count < data.Count)
+            {
+
+                data = GetFeedBackResponses(allResponses.Count);
+                allResponses.AddRange(data.Results.ToList());
+            }
+
+            return allResponses.FindAll(z => z.City == "Dublin");
+
+
+        }
+
+
+        private List<CrowdFeedback> GetCorkResponses()
+        {
+            ODataMetadata<CrowdFeedback> data = GetFeedBackResponses(0);
+
+            long countTweets = data.Count.Value;
+
+
+            List<CrowdFeedback> allResponses = data.Results.ToList();
+
+            // loop till we get em all 
+
+            while (allResponses.Count < data.Count)
+            {
+
+                data = GetFeedBackResponses(allResponses.Count);
+                allResponses.AddRange(data.Results.ToList());
+            }
+
+            return allResponses.FindAll(z => z.City == "Cork");
+
+
+        }
+
         //
         // GET: /PrizeGiving/Index
 
@@ -73,53 +120,22 @@ namespace WebSite.Controllers
         }
 
 
-
         //
         // GET: /PrizeGiving/Cork
 
         public ActionResult Cork()
         {
 
-            ODataMetadata<CrowdFeedback> data = GetFeedBackResponses(0);
-
-            long countTweets = data.Count.Value;
-
-
-            List<CrowdFeedback> allResponses = data.Results.ToList();
-
-            // loop till we get em all 
-
-            while (allResponses.Count < data.Count)
-            {
-
-                data = GetFeedBackResponses(allResponses.Count);
-                allResponses.AddRange(data.Results.ToList());
-            }
-
-            return View(allResponses);
+            var data = GetCorkResponses();
+            return View(data);
         }
 
 
         public ActionResult Dublin()
         {
 
-            ODataMetadata<CrowdFeedback> data = GetFeedBackResponses(0);
-
-            long countTweets = data.Count.Value;
-
-
-            List<CrowdFeedback> allResponses = data.Results.ToList();
-
-            // loop till we get em all 
-
-            while (allResponses.Count < data.Count)
-            {
-
-                data = GetFeedBackResponses(allResponses.Count);
-                allResponses.AddRange(data.Results.ToList());
-            }
-
-            return View(allResponses);
+            var data = GetDublinResponses();
+            return View(data);
         }
 
     }

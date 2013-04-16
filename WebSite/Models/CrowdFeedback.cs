@@ -12,5 +12,6 @@ namespace WebSite.Models
             public string Email { get; set; }
             public string Twitter { get; set; }
             public string Message { get; set; }
+            public string City { get; set; }
     }
 }

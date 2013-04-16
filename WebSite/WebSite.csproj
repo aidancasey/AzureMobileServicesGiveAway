@@ -312,7 +312,6 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
     <Content Include="Scripts\jquery-1.9.1.min.map" />
-    <Content Include="Views\PrizeGiving\CrowdFeedback.cshtml" />
     <Content Include="Views\PrizeGiving\Index.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
