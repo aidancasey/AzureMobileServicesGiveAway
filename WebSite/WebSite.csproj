@@ -180,7 +180,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\CrowdFeedback.cs" />
+    <Compile Include="Models\AudienceFeedback.cs" />
     <Compile Include="Models\ODataMetadata.cs" />
     <Compile Include="Models\Tweet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

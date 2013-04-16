@@ -16,26 +16,11 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Windows.Networking.PushNotifications;
 using System.Runtime.Serialization;
+using AidansWindowsStoreApp.Model;
 
 
-namespace GetStartedWithData
+namespace AidansWindowsStoreApp
 {
-
-    public class Channel
-    {
-        public int Id { get; set; }
-
-
-        [DataMember(Name = "uri")]
-        public string Uri { get; set; }
-
-
-    }
-
-
-    /// <summary>
-    /// Provides application-specific behavior to supplement the default Application class.
-    /// </summary>
     sealed partial class App : Application
     {
         public static PushNotificationChannel CurrentChannel { get; private set; }
@@ -51,11 +36,6 @@ namespace GetStartedWithData
             await channelTable.InsertAsync(channel);
         }
 
-
-        //// TODO: Configure the MobileServiceClient to communicate with your mobile service by
-        //// uncommenting the following code and replacing AppUrl & AppKey with values from  
-        //// your mobile service, which are obtained from the Windows Azure Management Portal.
-        //// Do this after you add a reference to the Mobile Services client to your project.
 
         public static MobileServiceClient MobileService = new MobileServiceClient(
             "https://irishazureheads.azure-mobile.net/",
@@ -74,32 +54,7 @@ namespace GetStartedWithData
         }
 
         string content = null;
-        //private async void OnPushNotification(PushNotificationChannel sender, PushNotificationReceivedEventArgs e)
-        //{
-        //    String notificationContent = String.Empty;
 
-        //    switch (e.NotificationType)
-        //    {
-        //        case PushNotificationType.Badge:
-        //            notificationContent = e.BadgeNotification.Content.GetXml();
-        //            break;
-
-        //        case PushNotificationType.Tile:
-        //            notificationContent = e.TileNotification.Content.GetXml();
-        //            break;
-
-        //        case PushNotificationType.Toast:
-        //            notificationContent = e.ToastNotification.Content.GetXml();
-        //            break;
-
-        //        case PushNotificationType.Raw:
-        //            notificationContent = e.RawNotification.Content;
-        //            break;
-        //    }
-
-            
-        //    e.Cancel = true;
-        //}
 
         /// <summary>
         /// Invoked when the application is launched normally by the end user.  Other entry points

@@ -14,7 +14,7 @@
     <Resource Language="x-generate" />
   </Resources>
   <Applications>
-    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="GetStartedWithData.App">
+    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="AidansWindowsStoreApp.App">
       <VisualElements DisplayName="User Group Feedback App" Logo="Assets\Logo.png" SmallLogo="Assets\SmallLogo.png" Description="sample application that supports the Get started with data tutorial." ForegroundText="light" BackgroundColor="#464646" ToastCapable="true">
         <DefaultTile ShowName="allLogos" />
         <SplashScreen Image="Assets\SplashScreen.png" />

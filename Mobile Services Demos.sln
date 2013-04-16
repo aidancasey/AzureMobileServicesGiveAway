@@ -4,10 +4,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Server Scripts", "Server Scripts", "{D4E58ADA-B2FE-4362-86EC-5DDB2FDE28FC}"
 	ProjectSection(SolutionItems) = preProject
 		server scripts\Channel.Insert.js = server scripts\Channel.Insert.js
-		server scripts\entry table insert step 1.js = server scripts\entry table insert step 1.js
-		server scripts\entry table insert step 2 - add timestamp.js = server scripts\entry table insert step 2 - add timestamp.js
-		server scripts\entry table insert step 3 with push.js = server scripts\entry table insert step 3 with push.js
-		server scripts\Push Notifications.txt = server scripts\Push Notifications.txt
+		CorkEntry.Read.js = CorkEntry.Read.js
+		server scripts\Entry. insert step 1.js = server scripts\Entry. insert step 1.js
+		server scripts\Entry. insert step 3 with push.js = server scripts\Entry. insert step 3 with push.js
+		server scripts\Entry.insert step 2 - add timestamp.js = server scripts\Entry.insert step 2 - add timestamp.js
+		server scripts\Push Notifications credentials.txt = server scripts\Push Notifications credentials.txt
 		server scripts\Updates.Schedule.js = server scripts\Updates.Schedule.js
 	EndProjectSection
 EndProject
@@ -31,6 +32,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{F11A2F
 		.nuget\NuGet.Config = .nuget\NuGet.Config
 		.nuget\NuGet.exe = .nuget\NuGet.exe
 		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "private files", "private files", "{9F098710-46F0-44DE-8208-1BBDEA07E90E}"
+	ProjectSection(SolutionItems) = preProject
+		secret\Push Notifications credentials.txt = secret\Push Notifications credentials.txt
 	EndProjectSection
 EndProject
 Global

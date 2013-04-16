@@ -16,20 +16,11 @@ using System.Collections.ObjectModel;
 using Windows.UI.Popups;
 using Microsoft.WindowsAzure.MobileServices;
 using System.ComponentModel.DataAnnotations;
+using AidansWindowsStoreApp.Model;
 
-namespace GetStartedWithData
+namespace AidansWindowsStoreApp
 {
-    public class Entry
-    {
-        public int? Id { get; set; }
-        [Required]
-        public string Name { get; set; }
-        [Required]
-        public string Email { get; set; }
-        public string Twitter { get; set; }
-        public string Message { get; set; }
 
-    }
 
     public sealed partial class MainPage : Page
     {
@@ -40,65 +31,33 @@ namespace GetStartedWithData
         //// TODO: Uncomment the following two lines of code to replace the following collection with todoTable, 
         //// a proxy for the table in SQL Database.
         private MobileServiceCollectionView<Entry> items;
-        private IMobileServiceTable<Entry> todoTable = App.MobileService.GetTable<Entry>();
+        private IMobileServiceTable<Entry> mobileServicesData = App.MobileService.GetTable<Entry>();
 
         public MainPage()
         {
             this.InitializeComponent();
         }
 
-        private async void InsertTodoItem(Entry todoItem)
-        {
-            // TODO: Delete or comment the following statement; Mobile Services auto-generates the ID.
-            //todoItem.Id = items.Count == 0 ? 0 : items.Max(i => i.Id) + 1;
-
-            //// This code inserts a new TodoItem into the database. When the operation completes
-            //// and Mobile Services has assigned an Id, the item is added to the CollectionView
-            //// TODO: Mark this method as "async" and uncomment the following statement.
-            
-            await todoTable.InsertAsync(todoItem);
-             
-            items.Add(todoItem);
-        }
 
         private void RefreshTodoItems()
         {
             // filter out the latest results only
-            items = todoTable
+            items = mobileServicesData
                .Where(todoItem => todoItem.Id >0)
                .OrderByDescending(x=>x.Id)
             //   .Take(7)
                .ToCollectionView();
 
              ListItems.ItemsSource = items;
-           //  Foo.ItemsSource = items;
+           
         }
 
-        private async void UpdateCheckedTodoItem(Entry item)
-        {
-            //// This code takes a freshly completed TodoItem and updates the database. When the MobileService 
-            //// responds, the item is removed from the list.
-            //// TODO: Mark this method as "async" and uncomment the following statement
-             await todoTable.UpdateAsync(item);     
-        }
 
         private void ButtonRefresh_Click(object sender, RoutedEventArgs e)
         {
             RefreshTodoItems();
         }
 
-        private void ButtonSave_Click(object sender, RoutedEventArgs e)
-        {
-         //   var todoItem = new TodoItem { Text = TextInput.Text, Channel = App.CurrentChannel.Uri };
-         //   InsertTodoItem(todoItem);
-        }
-
-        private void CheckBoxComplete_Checked(object sender, RoutedEventArgs e)
-        {
-            //CheckBox cb = (CheckBox)sender;
-            //TodoItem item = cb.DataContext as TodoItem;
-            //UpdateCheckedTodoItem(item);
-        }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {

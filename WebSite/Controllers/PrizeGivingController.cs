@@ -27,7 +27,7 @@ namespace WebSite.Controllers
            return JsonConvert.DeserializeObject<ODataMetadata<Tweet>>(data);
         }
 
-        private ODataMetadata<CrowdFeedback> GetFeedBackResponses(int skip)
+        private ODataMetadata<AudienceFeedback> GetFeedBackResponses(int skip)
         {
             HttpClient client;
             client = new HttpClient();
@@ -35,32 +35,34 @@ namespace WebSite.Controllers
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
             var data = client.GetStringAsync("https://irishazureheads.azure-mobile.net/tables/Entry?$inlinecount=allpages&$skip=" + skip).Result;
-            return JsonConvert.DeserializeObject<ODataMetadata<CrowdFeedback>>(data);
+            return JsonConvert.DeserializeObject<ODataMetadata<AudienceFeedback>>(data);
         }
 
 
-        private List<CrowdFeedback> GetCorkOnlyResponses()
+        private List<AudienceFeedback> GetCorkOnlyResponses()
         {
             HttpClient client;
             client = new HttpClient();
             client.DefaultRequestHeaders.Add("X-ZUMO-APPLICATION", _key);
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
+            // filer data on server ...
+
             var data = client.GetStringAsync("https://irishazureheads.azure-mobile.net/tables/CorkEntry").Result;
-            return JsonConvert.DeserializeObject<List<CrowdFeedback>>(data);
+            return JsonConvert.DeserializeObject<List<AudienceFeedback>>(data);
         }
 
 
-        private List<CrowdFeedback> GetDublinResponses()
+        private List<AudienceFeedback> GetDublinResponses()
         {
-            ODataMetadata<CrowdFeedback> data = GetFeedBackResponses(0);
+            ODataMetadata<AudienceFeedback> data = GetFeedBackResponses(0);
 
             long countTweets = data.Count.Value;
 
 
-            List<CrowdFeedback> allResponses = data.Results.ToList();
+            List<AudienceFeedback> allResponses = data.Results.ToList();
 
-            // loop till we get em all 
+            // filter data on client
 
             while (allResponses.Count < data.Count)
             {
@@ -78,7 +80,7 @@ namespace WebSite.Controllers
         }
 
 
-        private List<CrowdFeedback> GetCorkResponses()
+        private List<AudienceFeedback> GetCorkResponses()
         {
             var allResponses = GetCorkOnlyResponses();
             return allResponses;

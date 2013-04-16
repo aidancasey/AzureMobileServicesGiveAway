@@ -1,8 +1,8 @@
 ﻿<Application
-    x:Class="GetStartedWithData.App"
+    x:Class="AidansWindowsStoreApp.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:GetStartedWithData" RequestedTheme="Light">
+    xmlns:local="using:AidansWindowsStoreApp" RequestedTheme="Light">
 
     <Application.Resources>
         <ResourceDictionary>
