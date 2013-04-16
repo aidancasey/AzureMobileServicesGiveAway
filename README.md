@@ -1,10 +1,22 @@
-The Great Azure Mobile Services Give Away
-=========+++++++++++++++++++++============
+The Great Windows Azure Mobile Services Give Away
 
-Code samples to support an upcoming user group talk on Windows Azure Mobile Services.
 
-HTML 5 client app to enable users (the audience) to send feed back about the talk - auto email response generated with SendGrid
-Scheduller to read tweet stream to a table
-ASP.NET MVC app to display all tweets and pick a winner
-Windows Store App to demonstrate push notifications
+Prize giving applications built using a Windows Azure Mobile services Backend
 
+This code is suitable for a user group meet up - it demonstrated how to connect to mobile services sunig a variety of clients
+
+HTML + JavaScript client enables the audience to post messages to a table called "Entry"
+
+Server side scripts to send automatic emails to users as the register
+
+Windows Store application to view entries 
+
+Push Notifications to Windows store application
+
+Scheduled Task to aggregate tweets to @irishazureheads
+
+ASP.NET MVC application to pick random tweets & winning entries
+
+Fork & Enjoy
+
+Aidan Casey 2013
