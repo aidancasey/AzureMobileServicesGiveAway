@@ -1,0 +1,60 @@
+﻿@model IEnumerable<WebSite.Models.CrowdFeedback>
+
+<div class="widget">
+    <div class="widget-header">
+        <i class="icon-user"></i>
+        <h3>All Cork Registrations</h3>
+    </div>
+
+    <div class="widget-content">
+        @using (Html.BeginForm())
+        {
+            <div class="input-append">
+                <input name="SearchButton" type="button" class="btn" value="Pick Winner!" id="search" />
+            </div>
+        }
+            <table class="table table-bordered table-striped" id='tweets'>
+                <thead>
+                    <tr>
+                       <th>Id</th>
+                        <th>Name</th>
+                        <th>Message/th>
+                        <th>Twitter Handle</th>
+                    </tr>
+                </thead>
+                <tbody>
+                   @foreach (var result in Model)
+                    {
+                     <tr>
+                            <td >@result.Id</td>
+                              <td >@result.Name</td>
+                              <td >@result.Message</td>
+                              <td >@result.Twitter</td>
+                          
+                        </tr>
+                    }
+                </tbody>
+            </table>
+    </div>
+</div>
+    <script type="text/javascript">
+        var tbl = $('#tweets');
+          $(function () {
+            var retrievedRows = 1;
+            $('#search').click(function () {
+                // hide all rows
+                var rowCount = $('#tweets tr').length;
+                $('#tweets tr').hide();
+                var i = 1;
+                while (i <= retrievedRows) {
+
+                    rand = (Math.floor(Math.random() * rowCount));
+                    // if the row is currently hidden, show it
+                    if (tbl.find('tr').eq(rand).is(':hidden')) {
+                        tbl.find('tr').eq(rand).show();
+                        i++;  
+                    }
+                }
+            });
+        });
+</script>

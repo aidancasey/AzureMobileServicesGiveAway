@@ -1,0 +1,15 @@
+﻿@model IEnumerable<$rootnamespace$.Models.UserProfile>
+@{
+    
+    ViewBag.Title = "Index";
+}
+
+<h2>Users</h2>
+
+
+<ul>
+    <li>
+        <a href="~/SimpleMembershipAdministration/Main/Users">Users</a>
+        <a href="~/SimpleMembershipAdministration/Main/Roles">Roles</a>
+    </li>
+</ul>

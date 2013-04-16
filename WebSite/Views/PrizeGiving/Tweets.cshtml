@@ -1,0 +1,60 @@
+﻿@model IEnumerable<WebSite.Models.Tweet>
+
+<div class="widget">
+    <div class="widget-header">
+        <i class="icon-user"></i>
+        <h3>"irishazureheads tweets!!</h3>
+    </div>
+
+    <div class="widget-content">
+        @using (Html.BeginForm())
+        {
+            <div class="input-append">
+                <input name="SearchButton" type="button" class="btn" value="Pick Winner!" id="search" />
+            </div>
+        }
+            <table class="table table-bordered table-striped" id='tweets'>
+                <thead>
+                    <tr>
+                        <th >Id</th>
+                        <th>Twitter Id</th>
+                        <th>Text</th>
+                        <th>Author</th>
+      
+                    </tr>
+                </thead>
+                <tbody>
+                   @foreach (var result in Model)
+                    {
+                        <tr>
+                            <td >@result.Id</td>
+                              <td >@result.TwitterId</td>
+                              <td >@result.Text</td>
+                              <td >@result.Author</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+    </div>
+</div>
+    <script type="text/javascript">
+        var tbl = $('#tweets');
+          $(function () {
+            var retrievedRows = 1;
+            $('#search').click(function () {
+                // hide all rows
+                var rowCount = $('#tweets tr').length;
+                $('#tweets tr').hide();
+                var i = 1;
+                while (i <= retrievedRows) {
+
+                    rand = (Math.floor(Math.random() * rowCount));
+                    // if the row is currently hidden, show it
+                    if (tbl.find('tr').eq(rand).is(':hidden')) {
+                        tbl.find('tr').eq(rand).show();
+                        i++;  
+                    }
+                }
+            });
+        });
+</script>

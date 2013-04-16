@@ -2,14 +2,13 @@ var updatesTable = tables.getTable('Updates');
 var request = require('request');
 
 
-function getUpdates() {   
+function GetTweets() {   
     // Check what is the last tweet we stored when the job last ran
     // and ask Twitter to only give us more recent tweets
     
-    //twitter.com/search/realtime?q=azure&src=typd
-    //http://search.twitter.com/search.json?q=%23azure&result_type=recent
+    // 'http://search.twitter.com/search.json?q=%23Neo4J&rpp=100&result_type=mixed'
     appendLastTweetId(
-        'http://search.twitter.com/search.json?q=%23Neo4J&rpp=100&result_type=mixed', 
+        'http://search.twitter.com/search.json?q=%3Airishazureheads&rpp=100&result_type=mixed',
         function twitterUrlReady(url){
             request(url, function tweetsLoaded (error, response, body) {
                 if (!error && response.statusCode == 200) {
@@ -35,10 +34,7 @@ function getUpdates() {
 
 
     });
-
-
  }
-
 
 // Find the largest (most recent) tweet ID we have already stored
 // (if we have stored any) and ask Twitter to only return more
@@ -54,7 +50,6 @@ function appendLastTweetId(url, callback){
         }
     }});
 }
-
 
 function filterOutTweet(tweet){
     // Remove retweets and replies

@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title irishazureheads prize giving</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/themes/base/css")
+
+    <!--//TODO: Move these to the bottom of the page to speed up page loading -->
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/bundles/bootstrap")
+</head>
+<body>
+    <div class="wrapper">
+        <header class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="@Url.Action("Index", "Home")">
+                        <div class="brand-logo"></div>
+                    </a>
+                    <nav class="nav-collapse">
+                        <ul class="nav pull-right">
+                            @Html.Partial("_LoginPartial")
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+       
+        <section class="main">
+            @RenderSection("featured", required: false)
+            <div class="main-inner">
+                <div class="container">
+                    <div class="row">
+                        <div class="span12">
+                            <div class="widget">
+                                @RenderBody()
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="container">
+                <div class="row">
+                   
+                </div>
+            </div>
+        </div>
+    </footer>
+    @RenderSection("scripts", required: false)
+    <script type="text/javascript">
+        var fby = fby || [];
+        (function () {
+            var f = document.createElement('script'); f.type = 'text/javascript'; f.async = true;
+            f.src = '//cdn.feedbackify.com/f.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(f, s);
+        })();
+    </script>
+</body>
+</html>
