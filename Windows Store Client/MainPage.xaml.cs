@@ -45,7 +45,7 @@ namespace AidansWindowsStoreApp
             items = mobileServicesData
                .Where(todoItem => todoItem.Id >0)
                .OrderByDescending(x=>x.Id)
-            //   .Take(7)
+            //  .Take(7)
                .ToCollectionView();
 
              ListItems.ItemsSource = items;

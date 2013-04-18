@@ -38,8 +38,8 @@ namespace AidansWindowsStoreApp
 
 
         public static MobileServiceClient MobileService = new MobileServiceClient(
-            "https://irishazureheads.azure-mobile.net/",
-            "gaZDzSbELKKBORCiOizFHGjGicgURo61"
+            "https://mobservicesdemo.azure-mobile.net/",
+            "fWUUDAlBqdDHLEVvdftGOZyHcObdcp23"
         );
 
         /// <summary>

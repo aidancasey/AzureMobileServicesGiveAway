@@ -10,7 +10,7 @@
             <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js"></script>
         <![endif]-->
         <script src='http://code.jquery.com/jquery-1.9.0.min.js'></script>
-        <script src='https://irishazureheads.azure-mobile.net/client/MobileServices.Web-1.0.0.min.js'></script>
+        <script src='https://twitteraggregator.azure-mobile.net/client/MobileServices.Web-1.0.0.min.js'></script>
     </head>
     
     <body>
@@ -59,8 +59,8 @@
             $(function () {
 
                 var MobileServiceClient = WindowsAzure.MobileServiceClient,
-                    client = new MobileServiceClient('https://irishazureheads.azure-mobile.net/', 'gaZDzSbELKKBORCiOizFHGjGicgURo61'),
-                    todoItemTable = client.getTable('Entry');
+                    client = new MobileServiceClient('https://twitteraggregator.azure-mobile.net/', 'AcmqGAyjjQbuPlVrPXJYvmEmNRnolb43'),
+                    entryTable = client.getTable('Entry');
 
                 $("#contact-submit").click(function (evt) {
 
@@ -70,7 +70,7 @@
                     var message = $('#message').val();
                     var city = $('input:radio[name=location]:checked').val();
 
-                    todoItemTable.insert({
+                    entryTable.insert({
                         Name: fullName,
                         Email: email,
                         Twitter: twitter,

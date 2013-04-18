@@ -13,7 +13,8 @@
                 <input name="SearchButton" type="button" class="btn" value="Pick Winner!" id="search" />
             </div>
         }
-            <table class="table table-bordered table-striped" id='tweets'>
+
+            <table class="table table-hover table-bordered table-striped" id='tweets'>
                 <thead>
                     <tr>
                         <th >Id</th>
@@ -29,15 +30,35 @@
                         <tr>
                             <td >@result.Id</td>
                               <td >@result.TwitterId</td>
-                              <td >@result.Text</td>
+                              <td>
+                                  <div class="show-tooltip" title=" @result.Text"> @result.Text</div>
+                              </td>
                               <td >@result.Author</td>
                         </tr>
                     }
                 </tbody>
             </table>
+        </br>
+        </br>
+
     </div>
 </div>
     <script type="text/javascript">
+
+        $('.show-tooltip').each(function (e) {
+            var p = $(this).parent();
+            if (p.is('td')) {
+                /* if your tooltip is on a <td>, transfer <td>'s padding to wrapper */
+                $(this).css('padding', p.css('padding'));
+                p.css('padding', '0 0');
+            }
+            $(this).tooltip({
+                toggle: 'toolip',
+                placement: 'bottom'
+            });
+        });
+
+
         var tbl = $('#tweets');
           $(function () {
             var retrievedRows = 1;

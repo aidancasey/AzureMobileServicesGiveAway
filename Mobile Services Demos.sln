@@ -8,7 +8,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Server Scripts", "Server Sc
 		server scripts\Entry. insert step 1.js = server scripts\Entry. insert step 1.js
 		server scripts\Entry. insert step 3 with push.js = server scripts\Entry. insert step 3 with push.js
 		server scripts\Entry.insert step 2 - add timestamp.js = server scripts\Entry.insert step 2 - add timestamp.js
-		server scripts\Push Notifications credentials.txt = server scripts\Push Notifications credentials.txt
+		QueryByCity.js = QueryByCity.js
 		server scripts\Updates.Schedule.js = server scripts\Updates.Schedule.js
 	EndProjectSection
 EndProject

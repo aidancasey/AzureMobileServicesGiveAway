@@ -14,79 +14,56 @@ namespace WebSite.Controllers
     public class PrizeGivingCOntroller : Controller
     {
 
-    private string _key = "gaZDzSbELKKBORCiOizFHGjGicgURo61";
 
+
+        //get all tweets...
         private ODataMetadata<Tweet>  GetTweets(int skip)
         {
             HttpClient client;
             client = new HttpClient();
-            client.DefaultRequestHeaders.Add("X-ZUMO-APPLICATION", _key);
+            client.DefaultRequestHeaders.Add("X-ZUMO-APPLICATION", "AcmqGAyjjQbuPlVrPXJYvmEmNRnolb43");
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-            var data = client.GetStringAsync("https://irishazureheads.azure-mobile.net/tables/Updates?$inlinecount=allpages&$skip="+skip).Result;
+            var data = client.GetStringAsync("https://twitteraggregator.azure-mobile.net/tables/Updates?$inlinecount=allpages&$skip="+skip).Result;
            return JsonConvert.DeserializeObject<ODataMetadata<Tweet>>(data);
         }
 
-        private ODataMetadata<AudienceFeedback> GetFeedBackResponses(int skip)
+        private ODataMetadata<AudienceFeedback> GetFeedBackResponses(int skip, string city)
         {
             HttpClient client;
             client = new HttpClient();
-            client.DefaultRequestHeaders.Add("X-ZUMO-APPLICATION", _key);
+            client.DefaultRequestHeaders.Add("X-ZUMO-APPLICATION", "AcmqGAyjjQbuPlVrPXJYvmEmNRnolb43");
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-            var data = client.GetStringAsync("https://irishazureheads.azure-mobile.net/tables/Entry?$inlinecount=allpages&$skip=" + skip).Result;
+            var data = client.GetStringAsync("https://twitteraggregator.azure-mobile.net/tables/Entry?$inlinecount=allpages&$skip=" + skip + "&city=" + city).Result;
             return JsonConvert.DeserializeObject<ODataMetadata<AudienceFeedback>>(data);
         }
 
 
-        private List<AudienceFeedback> GetCorkOnlyResponses()
+
+        private List<AudienceFeedback> GetResponses(string cityName)
         {
-            HttpClient client;
-            client = new HttpClient();
-            client.DefaultRequestHeaders.Add("X-ZUMO-APPLICATION", _key);
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-            // filer data on server ...
-
-            var data = client.GetStringAsync("https://irishazureheads.azure-mobile.net/tables/CorkEntry").Result;
-            return JsonConvert.DeserializeObject<List<AudienceFeedback>>(data);
-        }
-
-
-        private List<AudienceFeedback> GetDublinResponses()
-        {
-            ODataMetadata<AudienceFeedback> data = GetFeedBackResponses(0);
+            ODataMetadata<AudienceFeedback> data = GetFeedBackResponses(0, cityName);
 
             long countTweets = data.Count.Value;
 
 
             List<AudienceFeedback> allResponses = data.Results.ToList();
 
-            // filter data on client
+
 
             while (allResponses.Count < data.Count)
             {
 
-                data = GetFeedBackResponses(allResponses.Count);
+                data = GetFeedBackResponses(allResponses.Count, cityName);
                 allResponses.AddRange(data.Results.ToList());
             }
-
-
-            //Filter in the client .. inefficient
-
-            return allResponses.FindAll(z => z.City == "Dublin");
-
-
-        }
-
-
-        private List<AudienceFeedback> GetCorkResponses()
-        {
-            var allResponses = GetCorkOnlyResponses();
             return allResponses;
+         //   return allResponses.FindAll(z => z.City == cityName);
 
 
         }
+
 
         //
         // GET: /PrizeGiving/Index
@@ -123,21 +100,21 @@ namespace WebSite.Controllers
         }
 
 
-        //
         // GET: /PrizeGiving/Cork
 
         public ActionResult Cork()
         {
 
-            var data = GetCorkResponses();
+            var data = GetResponses("Cork");
             return View(data);
         }
 
+        // GET: /PrizeGiving/Dublin
 
         public ActionResult Dublin()
         {
 
-            var data = GetDublinResponses();
+            var data = GetResponses("Dublin");
             return View(data);
         }
 

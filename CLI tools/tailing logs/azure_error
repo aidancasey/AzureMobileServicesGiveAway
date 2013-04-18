@@ -1,0 +1,11 @@
+Wed Apr 17 2013 22:03:45 GMT+1000 (AUS Eastern Standard Time):
+[Error: Host is not reachable. This may be due to lost internet connectivity. Please check your connection.]
+Error: Host is not reachable. This may be due to lost internet connectivity. Please check your connection.
+    at ClientRequest.<anonymous> (C:\Users\Aidan\AppData\Roaming\npm\node_modules\azure-cli\lib\channel.js:133:11)
+    at ClientRequest.EventEmitter.emit (events.js:88:17)
+    at CleartextStream.socketErrorListener (http.js:1320:9)
+    at CleartextStream.EventEmitter.emit (events.js:88:17)
+    at Socket.onerror (tls.js:1187:17)
+    at Socket.EventEmitter.emit (events.js:115:20)
+    at Socket.connect.require.lookup.addressType (net.js:704:16)
+    at process.startup.processNextTick.process._tickCallback (node.js:244:9)
